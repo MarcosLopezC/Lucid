@@ -86,11 +86,24 @@ var defineAccessor = function(object, key, settings) {
 	});
 };
 
+// Sets the writable property to false to all the properties within the given object that have
+// a constant name (all upper case).
+var lockConstants = function(object) {
+	Object.keys(object).forEach(function(key) {
+		if (key === key.toUpperCase()) {
+			defineConstant(object, key, object[key]);
+		}
+	});
+
+	return object;
+};
+
 module.exports = {
 	isAssigned:           isAssigned,
 	getAssigned:          getAssigned,
 	defineGlobalOnce:     defineGlobalOnce,
 	createConstantGetter: createConstantGetter,
 	defineConstant:       defineConstant,
-	defineAccessor:       defineAccessor
+	defineAccessor:       defineAccessor,
+	lockConstants:        lockConstants
 };
