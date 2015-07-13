@@ -54,6 +54,16 @@ module.exports = function(grunt) {
 			tasks: [
 				"quickBuild"
 			]
+		},
+		yuidoc: {
+			name: '<%= packageInfo.name %>',
+			description: '<%= packageInfo.description %>',
+			version: '<%= packageInfo.version %>',
+			url: '<%= packageInfo.homepage %>',
+			options: {
+				paths: 'Sources',
+				outdir: 'Documentation'
+			}
 		}
 	});
 
@@ -62,6 +72,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks("grunt-contrib-uglify");
 	grunt.loadNpmTasks("grunt-contrib-qunit");
 	grunt.loadNpmTasks("grunt-contrib-watch");
+	grunt.loadNpmTasks("grunt-contrib-yuidoc");
 
 	grunt.registerTask("quickBuild", [
 		"browserify"
@@ -70,7 +81,8 @@ module.exports = function(grunt) {
 	grunt.registerTask("build", [
 		"jshint",
 		"quickBuild",
-		"uglify"
+		"uglify",
+		"yuidoc"
 	]);
 
 	grunt.registerTask("default", [
