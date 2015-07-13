@@ -67,6 +67,8 @@ var defineConstant = function(object, key, value) {
 		value: value,
 		writable: false
 	});
+
+	return value;
 };
 
 // Defines an accessor in the given object.
