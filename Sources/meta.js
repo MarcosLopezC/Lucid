@@ -37,7 +37,6 @@ var defineGlobalOnce = function(namespace, constructor) {
 	var hierarchy = parseNamespace(namespace);
 	var leafName = hierarchy.pop();
 	var context = window;
-	var i, length;
 
 	if (!leafName) {
 		throw new Error("Invalid namespace or object name.");
