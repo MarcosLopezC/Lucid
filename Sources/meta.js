@@ -59,6 +59,13 @@ var defineGlobalOnce = function(namespace, constructor) {
 	return context[leafName];
 };
 
+// Returns a function which returns the value passed.
+var createConstantGetter = function(value) {
+	return function() {
+		return value;
+	};
+};
+
 var defineProperty = Object.defineProperty;
 
 // Defines a constant value in the given object.
@@ -80,9 +87,10 @@ var defineAccessor = function(object, key, settings) {
 };
 
 module.exports = {
-	isAssigned:       isAssigned,
-	getAssigned:      getAssigned,
-	defineGlobalOnce: defineGlobalOnce,
-	defineConstant:   defineConstant,
-	defineAccessor:   defineAccessor
+	isAssigned:           isAssigned,
+	getAssigned:          getAssigned,
+	defineGlobalOnce:     defineGlobalOnce,
+	createConstantGetter: createConstantGetter,
+	defineConstant:       defineConstant,
+	defineAccessor:       defineAccessor
 };
