@@ -9,7 +9,8 @@
 
 	meta.defineGlobalOnce("LUCID", function() {
 		return {
-			meta: meta
+			meta: meta,
+			math: require("./math")
 		};
 	});
 }());
